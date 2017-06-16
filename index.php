@@ -96,8 +96,7 @@ $contents = mb_convert_encoding($contents , 'UTF-8' , 'UTF-16LE');
 
          $contents = json_decode($contents,true);
          $products = $contents[products];
-        // print $products;
-         //var_dump($contents);
+        
         echo '<ul class="list-group">';
          foreach ($products as $product){
           echo '<li class="list-group-item justify-content-between">';
@@ -111,7 +110,7 @@ $contents = mb_convert_encoding($contents , 'UTF-8' , 'UTF-16LE');
              // echo "<span class='popuptext' id='$product[productId]'>";
             // echo $product[productDescription];
               //echo '</span>';
-
+                // creating modal with specific id for product description
               echo "<div class='modal' id='$product[productId]'>";
               
               echo "<div class='modal-content'>";
@@ -132,7 +131,7 @@ $contents = mb_convert_encoding($contents , 'UTF-8' , 'UTF-16LE');
 
 function(id){
 
-  // Get the button that opens the modal
+  // Get the url  that opens the modal
 var btn = document.getElementById(id);
 
 // Get the modal
@@ -143,7 +142,7 @@ var modal = document.getElementById(id);
 
 
 
-// Get the <span> element that closes the modal
+// Get the <span> element that closes the modal, giving error
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
