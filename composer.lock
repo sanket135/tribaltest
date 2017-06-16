@@ -1,0 +1,89 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "a8a442efeb7dbb6f31dc6abfcfa28df0",
+    "packages": [
+        {
+            "name": "crossjoin/json",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crossjoin/Json.git",
+                "reference": "3aca45816e406984efbd2372d98e161991f43b9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crossjoin/Json/zipball/3aca45816e406984efbd2372d98e161991f43b9d",
+                "reference": "3aca45816e406984efbd2372d98e161991f43b9d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "ext-iconv": "*",
+                "ext-json": "*",
+                "php": "^5.3.3 || ^7.0",
+                "phpunit/phpunit": "^4.8.23"
+            },
+            "suggest": {
+                "ext-iconv": "To support JSON in other encodings than UTF-8, either the iconv, intl (if PHP >= 5.5.0) or mbstring extension is required.",
+                "ext-intl": "To support JSON in other encodings than UTF-8, either the iconv, intl (if PHP >= 5.5.0) or mbstring extension is required.",
+                "ext-mbstring": "To support JSON in other encodings than UTF-8, either the iconv, intl (if PHP >= 5.5.0) or mbstring extension is required."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Crossjoin\\Json\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christoph Ziegenberg",
+                    "email": "ziegenberg@crossjoin.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "JSON decoder and encoder for PHP with full Unicode support following RFC 7159. Besides UTF-8 it also supports JSON in UTF-16BE, UTF-16LE, UTF-32BE and UTF-32LE encoding. And, as suggested by the RFC for better interoperability, it can also ignore byte order marks (BOMs) when parsing JSON.",
+            "homepage": "https://github.com/crossjoin/Json",
+            "keywords": [
+                "RFC 7159",
+                "UTF-16BE",
+                "UTF-16LE",
+                "UTF-32BE",
+                "UTF-32LE",
+                "json",
+                "json_decode",
+                "json_encode",
+                "json_last_error",
+                "json_last_error_msg",
+                "php",
+                "rfc7159",
+                "unicode",
+                "utf-16",
+                "utf-32",
+                "utf-8"
+            ],
+            "time": "2016-11-10T17:31:43+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
