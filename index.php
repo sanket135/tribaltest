@@ -73,6 +73,7 @@ Tribal Test
 
 
         <?php
+            // loaded the cross join package using composer for decoding json file
         require __DIR__ . '/vendor/autoload.php';
         // placing file input url 
         $url = "http://atlas.atdw-online.com.au/api/atlas/products?key=2015201520159&cla=APARTMENT&term=Blue%20Mountains&out=json";
