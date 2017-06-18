@@ -79,7 +79,7 @@ if (isset($_GET['page'])) {
 }
 
 // placing file input url 
-$url = "http://atlas.atdw-online.com.au/api/atlas/products?key=" . $key . "&cla=APARTMENT&term=Blue%20Mountains&size=10&pge=" . $pagenumber . "&out=json";
+$url = "http://atlas.atdw-online.com.au/api/atlas/products?key=".$key."&cla=APARTMENT&term=Blue%20Mountains&size=10&pge=".$pagenumber."&out=json";
 $contents = file_get_contents($url);
 // further attempts to do encoding 
 // $contents = json_encode($contents); 
@@ -93,7 +93,7 @@ throw new Exception('Input string could not be converted.');
 
 // encoding from UTF-16LE to UTF-8
 
-//$contents = json_decode($contents); 
+
 
 
 $contents = json_decode($contents, true);
@@ -104,17 +104,12 @@ if ($numberofresults % 10 != 0) {
     $numberofpages = $numberofpages + 1;
 }
 
-// print $products;
-//var_dump($contents);
 echo '<ul class="list-group">';
 foreach ($products as $product) {
     echo '<li class="list-group-item justify-content-between">';
     echo "<div  data-toggle='modal' id='btn_$product[productId]' data-target='#md_$product[productId]'>";
     echo $product[productName];
     echo '</div>';
-    // echo "<span class='popuptext' id='$product[productId]'>";
-    // echo $product[productDescription];
-    //echo '</span>';
     
     echo "<div class='modal' id='md_$product[productId]'>";
     
