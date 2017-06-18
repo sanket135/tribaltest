@@ -130,6 +130,7 @@ echo '</ul>';
 // pagination code here - declared loop 
 echo "<ul class='pagination'>";
 for ($i = 1; $i <= $numberofpages; $i++) {
+    // url is hardcoded and may require to be changed depending on your server settings 
     echo "<li><a href='http://localhost/tribaltest/index.php?page=$i'>$i</a></li>";
 }
 echo "</ul>";
