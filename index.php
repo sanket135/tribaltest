@@ -107,6 +107,7 @@ if ($numberofresults % 10 != 0) {
 echo '<ul class="list-group">';
 foreach ($listing['data'] as $product) {
     echo '<li class="list-group-item justify-content-between">';
+    // div that trigger modal pop up for displaying description
     echo "<div  data-toggle='modal' id='btn_$product[productId]' data-target='#md_$product[productId]'>";
     echo $product[productName];
     echo '</div>';
