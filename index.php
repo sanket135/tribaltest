@@ -92,9 +92,7 @@ throw new Exception('Input string could not be converted.');
 }*/
 
 // encoding from UTF-16LE to UTF-8
-
-
-
+$contents = mb_convert_encoding($contents, 'UTF-8', 'UTF-16LE');
 
 $contents = json_decode($contents, true);
 $products = $contents[products];
