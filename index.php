@@ -97,6 +97,7 @@ $data = new data;
 $listing = $data->listings($pagenumber);
 $numberofresults = $listing['numberOfResults'];
 
+// counting for pagination , number of total listings divided by number of listing in a page ie 10.
 $numberofpages = $numberofresults / 10;
 if ($numberofresults % 10 != 0) {
     $numberofpages = $numberofpages + 1;
@@ -124,7 +125,7 @@ echo '</ul>';
 
 
 
-
+// pagination code here - declared loop 
 echo "<ul class='pagination'>";
 for ($i = 1; $i <= $numberofpages; $i++) {
     echo "<li><a href='http://localhost/tribaltest/index.php?page=$i'>$i</a></li>";
