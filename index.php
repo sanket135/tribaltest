@@ -99,6 +99,7 @@ $numberofresults = $listing['numberOfResults'];
 
 // counting for pagination , number of total listings divided by number of listing in a page ie 10.
 $numberofpages = $numberofresults / 10;
+// counting for last page , last page added if remainder is not 0
 if ($numberofresults % 10 != 0) {
     $numberofpages = $numberofpages + 1;
 }
