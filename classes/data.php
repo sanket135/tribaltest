@@ -15,7 +15,7 @@ class data
     { 
     	
 
-    	// placing file input url 
+    	// placing file input url for api call
 		$url = "http://atlas.atdw-online.com.au/api/atlas/products?key=". $this->key ."&cla=APARTMENT&term=Blue%20Mountains&size=10&pge=".$page."&out=json";
 		$contents = file_get_contents($url);
 		// further attempts to do encoding 
@@ -51,7 +51,7 @@ class data
         if( $listings['success'] == false ) {
             throw new Exception($listings['errormsg']);
         }
-
+	// returning the list from api calls 
     	return $listings;
     }
 
