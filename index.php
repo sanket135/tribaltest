@@ -93,40 +93,50 @@ throw new Exception('Input string could not be converted.');
 
 // encoding from UTF-16LE to UTF-8
 
-$contents = mb_convert_encoding($contents , 'UTF-8' , 'UTF-16LE');
+//$contents = json_decode($contents); 
 
-         //$contents = json_decode($contents); 
-        
 
-         $contents = json_decode($contents,true);
-         $products = $contents[products];
-        
-        echo '<ul class="list-group">';
-         foreach ($products as $product){
-          echo '<li class="list-group-item justify-content-between">';
-             echo "<a href onclick='showmodel($product[productId])' >";
-             echo $product[productName];
-             echo '</button>';
-             echo '<span class="badge badge-default badge-pill">' ;
-              echo $product[score];
-              echo '</span>';
+$contents = json_decode($contents, true);
+$products = $contents[products];
+$numberofresults = $contents[numberOfResults];
+$numberofpages = $numberofresults / 10;
+if ($numberofresults % 10 != 0) {
+    $numberofpages = $numberofpages + 1;
+}
 
-             // echo "<span class='popuptext' id='$product[productId]'>";
-            // echo $product[productDescription];
-              //echo '</span>';
-                // creating modal with specific id for product description
-              echo "<div class='modal' id='$product[productId]'>";
-              
-              echo "<div class='modal-content'>";
-              echo "<span class='close'>&times;</span>";
-              echo "<p>$product[productDescription];</p>";
-              echo "</div>";
-              echo "</div>";
+// print $products;
+//var_dump($contents);
+echo '<ul class="list-group">';
+foreach ($products as $product) {
+    echo '<li class="list-group-item justify-content-between">';
+    echo "<div  data-toggle='modal' id='btn_$product[productId]' data-target='#md_$product[productId]'>";
+    echo $product[productName];
+    echo '</div>';
+    // echo "<span class='popuptext' id='$product[productId]'>";
+    // echo $product[productDescription];
+    //echo '</span>';
+    
+    echo "<div class='modal' id='md_$product[productId]'>";
+    
+    echo "<div class='modal-content'>";
+    echo "<span class='close'>&times;</span>";
+    echo "<p>'$product[productDescription];'</p>";
+    echo "</div>";
+    echo "</div>";
+    
+    echo '</li>';
+}
+echo '</ul>';
 
-            echo '</li>' ;
-         }
-         echo '</ul>';
-        ?>
+
+
+
+echo "<ul class='pagination'>";
+for ($i = 1; $i <= $numberofpages; $i++) {
+    echo "<li><a href='http://localhost/tribaltest/index.php?page=$i'>$i</a></li>";
+}
+echo "</ul>";
+?>
             
       
         
