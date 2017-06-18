@@ -92,7 +92,7 @@ if (isset($_GET['page'])) {
 }
 
 
-
+// new listing object 
 $data = new data;
 $listing = $data->listings($pagenumber);
 $numberofresults = $listing['numberOfResults'];
