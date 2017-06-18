@@ -12,7 +12,9 @@ Tribal Test
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+
+
+       
 
 <!-- code for pop up -->
 <style>
@@ -57,8 +59,11 @@ Tribal Test
     cursor: pointer;
 }
 </style>
+
+
+
     </head>
-<body>
+    <body>
         <div class="container-fluid" style="padding: 15px;">
             <nav class="nav navbar-fixed-top">
                 <ul class="nav navbar-default">
@@ -68,9 +73,17 @@ Tribal Test
                 <h2>Accommodation in Blue Mountains</h2>
             </div>
 
+
+
+
 <?php
+
+//load required files 
+
 require __DIR__ . '/vendor/autoload.php';
-$key = '2015201520159';
+require __DIR__ . '/classes/data.php';
+
+
 // page number
 if (isset($_GET['page'])) {
     $pagenumber = $_GET['page'];
@@ -78,36 +91,24 @@ if (isset($_GET['page'])) {
     $pagenumber = 1;
 }
 
-// placing file input url 
-$url = "http://atlas.atdw-online.com.au/api/atlas/products?key=".$key."&cla=APARTMENT&term=Blue%20Mountains&size=10&pge=".$pagenumber."&out=json";
-$contents = file_get_contents($url);
-// further attempts to do encoding 
-// $contents = json_encode($contents); 
-// attempt to decode utf-16le
-//$contents = iconv(in_charset, out_charset, $contents);
-/*  $contents = iconv($in_charset = 'UTF-16LE' , $out_charset = 'UTF-8' , $contents);
-if (false === $result)
-{
-throw new Exception('Input string could not be converted.');
-}*/
 
-// encoding from UTF-16LE to UTF-8
-$contents = mb_convert_encoding($contents, 'UTF-8', 'UTF-16LE');
 
-$contents = json_decode($contents, true);
-$products = $contents[products];
-$numberofresults = $contents[numberOfResults];
+$data = new data;
+$listing = $data->listings($pagenumber);
+$numberofresults = $listing['numberOfResults'];
+
 $numberofpages = $numberofresults / 10;
 if ($numberofresults % 10 != 0) {
     $numberofpages = $numberofpages + 1;
 }
 
 echo '<ul class="list-group">';
-foreach ($products as $product) {
+foreach ($listing['data'] as $product) {
     echo '<li class="list-group-item justify-content-between">';
     echo "<div  data-toggle='modal' id='btn_$product[productId]' data-target='#md_$product[productId]'>";
     echo $product[productName];
     echo '</div>';
+    
     
     echo "<div class='modal' id='md_$product[productId]'>";
     
@@ -130,9 +131,10 @@ for ($i = 1; $i <= $numberofpages; $i++) {
 }
 echo "</ul>";
 ?>
-            
+           
       
         
-    </div>
+        </div>
+       
     </body>
 </html>
