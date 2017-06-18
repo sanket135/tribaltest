@@ -57,15 +57,8 @@ Tribal Test
     cursor: pointer;
 }
 </style>
-
-
-
     </head>
-
-
-
-    </head>
-    <body>
+<body>
         <div class="container-fluid" style="padding: 15px;">
             <nav class="nav navbar-fixed-top">
                 <ul class="nav navbar-default">
@@ -75,21 +68,27 @@ Tribal Test
                 <h2>Accommodation in Blue Mountains</h2>
             </div>
 
+<?php
+require __DIR__ . '/vendor/autoload.php';
+$key = '2015201520159';
+// page number
+if (isset($_GET['page'])) {
+    $pagenumber = $_GET['page'];
+} else {
+    $pagenumber = 1;
+}
 
-        <?php
-            // loaded the cross join package using composer for decoding json file
-        require __DIR__ . '/vendor/autoload.php';
-        // placing file input url 
-        $url = "http://atlas.atdw-online.com.au/api/atlas/products?key=2015201520159&cla=APARTMENT&term=Blue%20Mountains&out=json";
-         $contents = file_get_contents($url); 
-         // further attempts to do encoding 
-        // $contents = json_encode($contents); 
-         // attempt to decode utf-16le
-         //$contents = iconv(in_charset, out_charset, $contents);
-       /*  $contents = iconv($in_charset = 'UTF-16LE' , $out_charset = 'UTF-8' , $contents);
+// placing file input url 
+$url = "http://atlas.atdw-online.com.au/api/atlas/products?key=" . $key . "&cla=APARTMENT&term=Blue%20Mountains&size=10&pge=" . $pagenumber . "&out=json";
+$contents = file_get_contents($url);
+// further attempts to do encoding 
+// $contents = json_encode($contents); 
+// attempt to decode utf-16le
+//$contents = iconv(in_charset, out_charset, $contents);
+/*  $contents = iconv($in_charset = 'UTF-16LE' , $out_charset = 'UTF-8' , $contents);
 if (false === $result)
 {
-    throw new Exception('Input string could not be converted.');
+throw new Exception('Input string could not be converted.');
 }*/
 
 // encoding from UTF-16LE to UTF-8
