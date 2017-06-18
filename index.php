@@ -12,11 +12,7 @@ Tribal Test
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-
-
-       
+    
 
 <!-- code for pop up -->
 <style>
@@ -34,7 +30,9 @@ Tribal Test
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-
+.modal-backdrop {
+  z-index: 0 !important;
+}
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
@@ -59,6 +57,10 @@ Tribal Test
     cursor: pointer;
 }
 </style>
+
+
+
+    </head>
 
 
 
